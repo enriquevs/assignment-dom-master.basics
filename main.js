@@ -83,14 +83,33 @@ document.querySelector("#reverse-squares button").addEventListener('click',funct
 
 document.querySelector("#pig-latin button").addEventListener('click',function(){
   // TASK #6
-  var tasksReverse= []
+//creamos una variable vacia para guardar las
+  var textReverse= []
+  var container = document.querySelector('#tasks')
+  var listItems = document.querySelectorAll('#tasks li')
+  var template = "";
 
-  var newArray = document.querySelector('tasks')
+  listItems.forEach(function(item){
 
+    var word = item.innerHTML;
+//word.split para separar las palabras en letras
+//.reverse para invertir el orden de las letras
+//.join para unir laas letras y formar una nueva palabra
+    var wordReverse = word.split("").reverse().join("");
+//para quitar el primer arreglo
+    textReverse.push(wordReverse);
+//.remove para quitar las palabras
+    item.remove();
+  })
 
+  textReverse.forEach(function (text){
+//se crea una nueva lista para poder agregar las  nuevas palabras
+  var li = document.createElement('li');
 
-
-
+  li.innerHTML = text;
+//
+  container.appendChild(li);
+ })
 })
 
 document.querySelector("#cycle-image button").addEventListener('click',function(){
